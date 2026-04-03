@@ -112,7 +112,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 </div>
 <div class="buttons">
 <button id="btn-gcal" class="btn gold" type="button">📅 Adauga in Calendar (Google)</button>
-<a href="https://adrianboglis95-del.github.io/Nunta/nunta.ics" class="btn outline">🍎 Adauga in Calendar (Apple)</a>
+<a href="https://raw.githubusercontent.com/adrianboglis95-del/Nunta/main/nunta.ics" class="btn outline">🍎 Adauga in Calendar (Apple)</a>
 </div>
 <p class="deadline">Confirmati prezenta pana la 1 iulie 2026</p>
 <div class="buttons">
@@ -210,7 +210,6 @@ var VENUE='Ballroom Capitol';
 var ADDR='Sos. Nicolina 203A, Iasi';
 var MAP='https://maps.app.goo.gl/6ACiCiZP7edFx9rX9';
 
-/* COUNTDOWN */
 function updateCountdown(){
 var target=new Date('2026-08-22T19:30:00+03:00').getTime();
 var now=new Date().getTime();
@@ -228,7 +227,6 @@ document.getElementById('cd-secs').textContent=s;
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-/* GOOGLE CALENDAR - 2 EVENIMENTE */
 var gcalBase='https://calendar.google.com/calendar/render?action=TEMPLATE';
 var gcalLink1=gcalBase+'&'+new URLSearchParams({
 text:'⏰ Confirma prezenta - Nunta '+COUPLE,
@@ -248,7 +246,6 @@ window.open(gcalLink1,'_blank');
 setTimeout(function(){window.open(gcalLink2,'_blank');},1500);
 });
 
-/* BUTOANE DA/NU */
 document.getElementById('btn-yes').addEventListener('click',function(){
 document.getElementById('rsvp-no').classList.add('hidden');
 document.getElementById('rsvp-yes').classList.remove('hidden');
@@ -260,7 +257,6 @@ document.getElementById('rsvp-no').classList.remove('hidden');
 window.scrollTo({top:document.getElementById('rsvp-no').offsetTop-20,behavior:'smooth'});
 });
 
-/* LOGICA FORMULAR */
 var formYes=document.getElementById('form-yes');
 var childrenInput=formYes.querySelector('input[name="children"]');
 var childrenExtra=document.getElementById('children-extra');
@@ -290,7 +286,6 @@ updateVegOptions();
 for(var i=0;i<adultsRadios.length;i++){adultsRadios[i].addEventListener('change',updateVegOptions);}
 updateVegOptions();
 
-/* TRIMITE LA GOOGLE SHEETS */
 function sendToSheet(data,callback){
 var params=new URLSearchParams();
 params.append('name',data.name);
@@ -308,7 +303,6 @@ img.onerror=function(){if(!done){done=true;callback(true);}};
 img.src=url;
 }
 
-/* SUBMIT DA */
 document.getElementById('submit-yes').addEventListener('click',function(){
 var fd=new FormData(formYes);
 var yesStatus=document.getElementById('yes-status');
@@ -347,7 +341,6 @@ setTimeout(function(){window.location.href=waLink;},2000);
 });
 });
 
-/* SUBMIT NU */
 document.getElementById('submit-no').addEventListener('click',function(){
 var fd=new FormData(document.getElementById('form-no'));
 var noStatus=document.getElementById('no-status');
