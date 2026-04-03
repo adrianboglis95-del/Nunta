@@ -109,7 +109,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 <p class="cd-sub">pana la ziua cea mare</p>
 </div>
 <div class="buttons">
-<a id="btn-calendar" class="btn gold" style="text-decoration:none;">📅 Adauga in Calendar</a>
+<button id="btn-gcal" class="btn gold" type="button">📅 Google Calendar</button>
+<a href="https://drive.google.com/uc?export=download&id=1l9ks7OuDCmey79WgtgMvU_4hAMu7cpnr" class="btn outline">🍎 Apple Calendar</a>
 </div>
 <p class="deadline">Confirmati prezenta pana la 1 iulie 2026</p>
 <div class="buttons">
@@ -205,7 +206,6 @@ var WA_PHONE='40763384310';
 var COUPLE='Paul & Iuliana';
 var VENUE='Ballroom Capitol';
 var ADDR='Sos. Nicolina 203A, Iasi';
-var MAP='https://maps.app.goo.gl/6ACiCiZP7edFx9rX9';
 
 function updateCountdown(){
 var target=new Date('2026-08-22T19:30:00+03:00').getTime();
@@ -224,9 +224,27 @@ document.getElementById('cd-secs').textContent=s;
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-/* CALENDAR - link direct la Apps Script care serveste .ics */
-document.getElementById('btn-calendar').href=SHEET_URL+'?action=ics';
+/* GOOGLE CALENDAR - 2 EVENIMENTE */
+var gcalBase='https://calendar.google.com/calendar/render?action=TEMPLATE';
+var gcalLink1=gcalBase+'&'+new URLSearchParams({
+text:'⏰ Confirma prezenta - Nunta '+COUPLE,
+dates:'20260701T120000/20260701T123000',
+details:'Nu uita sa confirmi prezenta la nunta '+COUPLE+'! Termen limita: 1 iulie 2026.',
+ctz:'Europe/Bucharest'
+}).toString();
+var gcalLink2=gcalBase+'&'+new URLSearchParams({
+text:'💍 Nunta '+COUPLE,
+dates:'20260822T193000/20260822T235900',
+details:'Va asteptam cu drag! '+VENUE+', '+ADDR,
+location:VENUE+', '+ADDR,
+ctz:'Europe/Bucharest'
+}).toString();
+document.getElementById('btn-gcal').addEventListener('click',function(){
+window.open(gcalLink1,'_blank');
+setTimeout(function(){window.open(gcalLink2,'_blank');},1500);
+});
 
+/* BUTOANE DA/NU */
 document.getElementById('btn-yes').addEventListener('click',function(){
 document.getElementById('rsvp-no').classList.add('hidden');
 document.getElementById('rsvp-yes').classList.remove('hidden');
@@ -238,6 +256,7 @@ document.getElementById('rsvp-no').classList.remove('hidden');
 window.scrollTo({top:document.getElementById('rsvp-no').offsetTop-20,behavior:'smooth'});
 });
 
+/* LOGICA FORMULAR */
 var formYes=document.getElementById('form-yes');
 var childrenInput=formYes.querySelector('input[name="children"]');
 var childrenExtra=document.getElementById('children-extra');
@@ -267,6 +286,7 @@ updateVegOptions();
 for(var i=0;i<adultsRadios.length;i++){adultsRadios[i].addEventListener('change',updateVegOptions);}
 updateVegOptions();
 
+/* TRIMITE LA GOOGLE SHEETS */
 function sendToSheet(data,callback){
 var params=new URLSearchParams();
 params.append('name',data.name);
@@ -284,6 +304,7 @@ img.onerror=function(){if(!done){done=true;callback(true);}};
 img.src=url;
 }
 
+/* SUBMIT DA */
 document.getElementById('submit-yes').addEventListener('click',function(){
 var fd=new FormData(formYes);
 var yesStatus=document.getElementById('yes-status');
@@ -332,6 +353,7 @@ setTimeout(function(){window.location.href=waLink;},2000);
 });
 });
 
+/* SUBMIT NU */
 document.getElementById('submit-no').addEventListener('click',function(){
 var fd=new FormData(document.getElementById('form-no'));
 var noStatus=document.getElementById('no-status');
