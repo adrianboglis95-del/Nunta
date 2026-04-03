@@ -109,7 +109,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 <p class="cd-sub">pana la ziua cea mare</p>
 </div>
 <div class="buttons">
-<button id="btn-calendar" class="btn gold" type="button">📅 Adauga in Calendar</button>
+<a id="btn-calendar" class="btn gold" style="text-decoration:none;">📅 Adauga in Calendar</a>
 </div>
 <p class="deadline">Confirmati prezenta pana la 1 iulie 2026</p>
 <div class="buttons">
@@ -224,10 +224,45 @@ document.getElementById('cd-secs').textContent=s;
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-var icsLink='https://raw.githubusercontent.com/adrianboglis95-del/Nunta/main/nunta.ics';
-document.getElementById('btn-calendar').addEventListener('click',function(){
-window.location.href=icsLink;
-});
+/* CALENDAR - data URI pentru ICS */
+var icsContent=[
+'BEGIN:VCALENDAR',
+'VERSION:2.0',
+'CALSCALE:GREGORIAN',
+'PRODID:-//Nunta Paul and Iuliana//EN',
+'METHOD:PUBLISH',
+'BEGIN:VEVENT',
+'UID:reminder-nunta-2026@pauliuliana',
+'DTSTART:20260701T090000Z',
+'DTEND:20260701T093000Z',
+'SUMMARY:Confirma prezenta - Nunta Paul si Iuliana',
+'DESCRIPTION:Nu uita sa confirmi prezenta la nunta! Termen limita: 1 iulie 2026.',
+'BEGIN:VALARM',
+'TRIGGER:-PT30M',
+'ACTION:DISPLAY',
+'DESCRIPTION:Confirma prezenta la nunta Paul si Iuliana',
+'END:VALARM',
+'END:VEVENT',
+'BEGIN:VEVENT',
+'UID:nunta-2026@pauliuliana',
+'DTSTART:20260822T163000Z',
+'DTEND:20260822T205900Z',
+'SUMMARY:Nunta Paul si Iuliana',
+'LOCATION:Ballroom Capitol\\, Sos. Nicolina 203A\\, Iasi',
+'DESCRIPTION:Va invitam cu drag! Ballroom Capitol\\, Sos. Nicolina 203A\\, Iasi',
+'URL:https://maps.app.goo.gl/6ACiCiZP7edFx9rX9',
+'BEGIN:VALARM',
+'TRIGGER:-P1D',
+'ACTION:DISPLAY',
+'DESCRIPTION:Maine este nunta Paul si Iuliana!',
+'END:VALARM',
+'END:VEVENT',
+'END:VCALENDAR'
+].join('\r\n');
+
+var icsDataUri='data:text/calendar;charset=utf-8,'+encodeURIComponent(icsContent);
+document.getElementById('btn-calendar').href=icsDataUri;
+document.getElementById('btn-calendar').setAttribute('download','nunta.ics');
 
 document.getElementById('btn-yes').addEventListener('click',function(){
 document.getElementById('rsvp-no').classList.add('hidden');
