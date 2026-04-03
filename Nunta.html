@@ -200,7 +200,7 @@ Sunt de acord ca datele mele sa fie prelucrate pentru organizarea evenimentului.
 <div class="container small">Cu drag, Paul & Iuliana • 22 august 2026</div>
 </footer>
 <script>
-var SHEET_URL='https://script.google.com/macros/s/AKfycbxwjb6QQmxImp0K91VHlfxZ_joyuDMXOuXcbNQIvNg9zo7JjuLLwEqk60TyrpQZNg0H/exec';
+var SHEET_URL='https://script.google.com/macros/s/AKfycbyw5vaUI1-77ALRyffShdSc3zwaXHtnrUVzAotRG0Wqkcgmrxf_DERBMxCZDSObRzJY/exec';
 var WA_PHONE='40763384310';
 var COUPLE='Paul & Iuliana';
 var VENUE='Ballroom Capitol';
@@ -224,45 +224,8 @@ document.getElementById('cd-secs').textContent=s;
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-/* CALENDAR - data URI pentru ICS */
-var icsContent=[
-'BEGIN:VCALENDAR',
-'VERSION:2.0',
-'CALSCALE:GREGORIAN',
-'PRODID:-//Nunta Paul and Iuliana//EN',
-'METHOD:PUBLISH',
-'BEGIN:VEVENT',
-'UID:reminder-nunta-2026@pauliuliana',
-'DTSTART:20260701T090000Z',
-'DTEND:20260701T093000Z',
-'SUMMARY:Confirma prezenta - Nunta Paul si Iuliana',
-'DESCRIPTION:Nu uita sa confirmi prezenta la nunta! Termen limita: 1 iulie 2026.',
-'BEGIN:VALARM',
-'TRIGGER:-PT30M',
-'ACTION:DISPLAY',
-'DESCRIPTION:Confirma prezenta la nunta Paul si Iuliana',
-'END:VALARM',
-'END:VEVENT',
-'BEGIN:VEVENT',
-'UID:nunta-2026@pauliuliana',
-'DTSTART:20260822T163000Z',
-'DTEND:20260822T205900Z',
-'SUMMARY:Nunta Paul si Iuliana',
-'LOCATION:Ballroom Capitol\\, Sos. Nicolina 203A\\, Iasi',
-'DESCRIPTION:Va invitam cu drag! Ballroom Capitol\\, Sos. Nicolina 203A\\, Iasi',
-'URL:https://maps.app.goo.gl/6ACiCiZP7edFx9rX9',
-'BEGIN:VALARM',
-'TRIGGER:-P1D',
-'ACTION:DISPLAY',
-'DESCRIPTION:Maine este nunta Paul si Iuliana!',
-'END:VALARM',
-'END:VEVENT',
-'END:VCALENDAR'
-].join('\r\n');
-
-var icsDataUri='data:text/calendar;charset=utf-8,'+encodeURIComponent(icsContent);
-document.getElementById('btn-calendar').href=icsDataUri;
-document.getElementById('btn-calendar').setAttribute('download','nunta.ics');
+/* CALENDAR - link direct la Apps Script care serveste .ics */
+document.getElementById('btn-calendar').href=SHEET_URL+'?action=ics';
 
 document.getElementById('btn-yes').addEventListener('click',function(){
 document.getElementById('rsvp-no').classList.add('hidden');
@@ -338,17 +301,27 @@ var vegNr=fd.get('veg_count')||'0';
 var btn=document.getElementById('submit-yes');
 btn.disabled=true;btn.textContent='Se trimite...';
 yesStatus.innerHTML='';
+var adults=fd.get('adults')||'1';
 var data={
 name:name,
 phone:phone,
 status:'Da',
-adults:fd.get('adults')||'1',
+adults:adults,
 children_count:String(kids),
 children_menu:kids>0?(fd.get('children_menu')||'Nu'):'Nu',
 children_veg:vegNr==='0'?'0':vegNr
 };
 sendToSheet(data,function(){
-var waMsg='Buna, sunt '+name+'. Confirm prezenta la nunta voastra pe 22 august 2026! Vom fi '+data.adults+' adulti'+(kids>0?' si '+kids+' copii':'')+'. Abia asteptam!';
+var waMsg='';
+if(adults==='1' && kids===0){
+waMsg='Buna, sunt '+name+'. Confirm prezenta la nunta voastra pe 22 august 2026! Abia astept!';
+}else if(adults==='2' && kids===0){
+waMsg='Buna, sunt '+name+'. Confirmam prezenta la nunta voastra pe 22 august 2026! Vom fi 2 persoane. Abia asteptam!';
+}else if(adults==='1' && kids>0){
+waMsg='Buna, sunt '+name+'. Confirm prezenta la nunta voastra pe 22 august 2026! Voi fi insotit de '+(kids===1?'1 copil':kids+' copii')+'. Abia asteptam!';
+}else{
+waMsg='Buna, sunt '+name+'. Confirmam prezenta la nunta voastra pe 22 august 2026! Vom fi 2 adulti si '+(kids===1?'1 copil':kids+' copii')+'. Abia asteptam!';
+}
 var waLink='https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(waMsg);
 yesStatus.innerHTML='<div class="success-box">✓ Multumim! Confirmarea a fost salvata cu succes.<br/>Va asteptam cu drag!<br/>Se deschide WhatsApp pentru confirmare...</div>';
 formYes.reset();
