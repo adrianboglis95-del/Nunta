@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+PRODID:-//Nunta Paul & Iuliana//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:reminder-nunta-2026@pauliuliana
+DTSTART:20260701T090000Z
+DTEND:20260701T093000Z
+SUMMARY:⏰ Confirma prezenta - Nunta Paul & Iuliana
+DESCRIPTION:Nu uita sa confirmi prezenta la nunta! Termen limita: 1 iulie 2026.
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Confirma prezenta la nunta Paul & Iuliana
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nunta-2026@pauliuliana
+DTSTART:20260822T163000Z
+DTEND:20260822T205900Z
+SUMMARY:Nunta Paul & Iuliana
+LOCATION:Ballroom Capitol\, Sos. Nicolina 203A\, Iasi
+DESCRIPTION:Va invitam cu drag! Ballroom Capitol - Sos. Nicolina 203A\, Iasi
+URL:https://maps.app.goo.gl/6ACiCiZP7edFx9rX9
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Maine este nunta Paul & Iuliana!
+END:VALARM
+END:VEVENT
+END:VCALENDAR
