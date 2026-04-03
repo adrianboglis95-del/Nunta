@@ -112,7 +112,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 </div>
 <div class="buttons">
 <button id="btn-gcal" class="btn gold" type="button">📅 Adauga in Calendar (Google)</button>
-<button id="btn-ics" class="btn outline" type="button">🍎 Adauga in Calendar (Apple)</button>
+<a href="https://adrianboglis95-del.github.io/Nunta/nunta.ics" class="btn outline">🍎 Adauga in Calendar (Apple)</a>
 </div>
 <p class="deadline">Confirmati prezenta pana la 1 iulie 2026</p>
 <div class="buttons">
@@ -246,48 +246,6 @@ ctz:'Europe/Bucharest'
 document.getElementById('btn-gcal').addEventListener('click',function(){
 window.open(gcalLink1,'_blank');
 setTimeout(function(){window.open(gcalLink2,'_blank');},1500);
-});
-
-/* ICS - 2 EVENIMENTE: REMINDER + NUNTA */
-function escapeICS(s){return String(s||'').replace(/([,;])/g,'\\$1');}
-document.getElementById('btn-ics').addEventListener('click',function(){
-var ics=[
-'BEGIN:VCALENDAR',
-'VERSION:2.0',
-'CALSCALE:GREGORIAN',
-'PRODID:-//Nunta '+COUPLE+'//EN',
-'METHOD:PUBLISH',
-'BEGIN:VEVENT',
-'UID:reminder-'+Date.now()+'@nunta',
-'DTSTART:20260701T090000Z',
-'DTEND:20260701T093000Z',
-'SUMMARY:⏰ Confirma prezenta - Nunta '+COUPLE,
-'DESCRIPTION:'+escapeICS('Nu uita sa confirmi prezenta la nunta! Termen limita: 1 iulie 2026.'),
-'BEGIN:VALARM',
-'TRIGGER:-PT30M',
-'ACTION:DISPLAY',
-'DESCRIPTION:Confirma prezenta la nunta '+COUPLE,
-'END:VALARM',
-'END:VEVENT',
-'BEGIN:VEVENT',
-'UID:nunta-'+Date.now()+'@nunta',
-'DTSTART:20260822T163000Z',
-'DTEND:20260822T205900Z',
-'SUMMARY:Nunta '+COUPLE,
-'LOCATION:'+escapeICS(VENUE+', '+ADDR),
-'DESCRIPTION:'+escapeICS('Va invitam cu drag! '+VENUE+' - '+ADDR),
-'URL:'+MAP,
-'BEGIN:VALARM',
-'TRIGGER:-P1D',
-'ACTION:DISPLAY',
-'DESCRIPTION:Maine este nunta '+COUPLE+'!',
-'END:VALARM',
-'END:VEVENT',
-'END:VCALENDAR'
-].join('\r\n');
-var blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
-var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nunta.ics';
-document.body.appendChild(a);a.click();a.remove();
 });
 
 /* BUTOANE DA/NU */
