@@ -57,8 +57,6 @@ background:var(--cream);padding:0 12px;color:var(--gold);font-size:22px;
 .btn.danger:hover{box-shadow:0 4px 12px rgba(107,26,26,0.3);}
 .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--fg);}
 .btn.gold:hover{box-shadow:0 4px 12px rgba(201,168,76,0.4);}
-.btn.whatsapp{background:#25D366;border-color:#25D366;color:#fff;}
-.btn.whatsapp:hover{box-shadow:0 4px 12px rgba(37,211,102,0.4);}
 .deadline{text-align:center;font-family:"Cormorant Garamond",serif;font-size:1.05rem;color:var(--accent);margin:1rem 0 0.5rem;font-weight:600;}
 .card{background:var(--paper);border:2px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.04);position:relative;}
 .card h2{font-family:"Playfair Display",serif;color:var(--accent);font-size:1.4rem;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:2px solid var(--gold-light);}
@@ -111,8 +109,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 <p class="cd-sub">pana la ziua cea mare</p>
 </div>
 <div class="buttons">
-<button id="btn-gcal" class="btn gold" type="button">📅 Adauga in Calendar (Google)</button>
-<a href="https://raw.githubusercontent.com/adrianboglis95-del/Nunta/main/nunta.ics" class="btn outline">🍎 Adauga in Calendar (Apple)</a>
+<button id="btn-calendar" class="btn gold" type="button">📅 Adauga in Calendar</button>
 </div>
 <p class="deadline">Confirmati prezenta pana la 1 iulie 2026</p>
 <div class="buttons">
@@ -227,23 +224,9 @@ document.getElementById('cd-secs').textContent=s;
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-var gcalBase='https://calendar.google.com/calendar/render?action=TEMPLATE';
-var gcalLink1=gcalBase+'&'+new URLSearchParams({
-text:'⏰ Confirma prezenta - Nunta '+COUPLE,
-dates:'20260701T120000/20260701T123000',
-details:'Nu uita sa confirmi prezenta la nunta '+COUPLE+'! Termen limita: 1 iulie 2026.',
-ctz:'Europe/Bucharest'
-}).toString();
-var gcalLink2=gcalBase+'&'+new URLSearchParams({
-text:'Nunta '+COUPLE,
-dates:'20260822T193000/20260822T235900',
-details:'Va asteptam cu drag! '+VENUE+', '+ADDR,
-location:VENUE+', '+ADDR,
-ctz:'Europe/Bucharest'
-}).toString();
-document.getElementById('btn-gcal').addEventListener('click',function(){
-window.open(gcalLink1,'_blank');
-setTimeout(function(){window.open(gcalLink2,'_blank');},1500);
+var icsLink='https://raw.githubusercontent.com/adrianboglis95-del/Nunta/main/nunta.ics';
+document.getElementById('btn-calendar').addEventListener('click',function(){
+window.location.href=icsLink;
 });
 
 document.getElementById('btn-yes').addEventListener('click',function(){
