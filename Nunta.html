@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Nunta Paul & Iuliana - Save the Date</title>
+<title>Nunta Paul & Iuliana – Save the Date</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -87,6 +87,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 .link{color:var(--accent2);text-decoration:none}
 .link:hover{text-decoration:underline}
 .veg-note{font-weight:400;font-size:0.85rem;color:var(--muted);margin-top:0.2rem}
+.field-note{font-weight:400;font-size:0.85rem;color:var(--muted);margin-top:0.2rem}
 .success-box{background:#e8f5e9;border:2px solid #4caf50;border-radius:8px;padding:1rem;text-align:center;color:#2e7d32;font-weight:600;margin-top:1rem;}
 .cd-box{background:var(--accent);color:#fff;border-radius:10px;padding:0.6rem 1rem;min-width:70px;text-align:center;}
 .cd-num{font-family:"Playfair Display",serif;font-size:2rem;font-weight:700;}
@@ -98,8 +99,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 </head>
 <body>
 <div id="intro-screen">
-<img id="intro-img" src="https://adrianboglis95-del.github.io/Nunta/intro.png" alt="Invitatie"/>
-<div class="tap-hint">✦ Apasa pentru a deschide invitatia ✦</div>
+<img id="intro-img" src="https://adrianboglis95-del.github.io/Nunta/intro.png" alt="Invitație"/>
+<div class="tap-hint">✦ Apasă pentru a deschide invitația ✦</div>
 </div>
 <div id="main-page" class="page-bg">
 <div class="traditional-border"><div class="traditional-border-inner"></div></div>
@@ -109,9 +110,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 <p class="subtitle">Save the Date</p>
 <h1>💍 Paul & Iuliana</h1>
 <div class="ornament">✦ ❋ ✦</div>
-<p class="lead">Va invitam sa fiti alaturi de noi in ziua cea mare!<br/>Ne casatorim si vrem sa sarbatorim impreuna cu voi.<br/>Va asteptam cu drag la Ballroom Capitol! 🥂</p>
+<p class="lead">Vă invităm să fiți alături de noi în ziua cea mare!<br/>Ne căsătorim și vrem să sărbătorim împreună cu voi.<br/>Vă așteptăm cu drag la Ballroom Capitol! 🥂</p>
 <div class="ornament">— ❦ —</div>
-<p class="details"><strong>Sambata, 22 august 2026, ora 19:30</strong><br/>Ballroom Capitol, Sos. Nicolina 203A, Iasi</p>
+<p class="details"><strong>Sâmbătă, 22 august 2026, ora 19:30</strong><br/>Ballroom Capitol, Șos. Nicolina 203A, Iași</p>
 <div id="countdown" style="margin:1rem 0;">
 <div class="cd-wrap">
 <div class="cd-box"><div class="cd-num" id="cd-days">0</div><div class="cd-label">Zile</div></div>
@@ -119,15 +120,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 <div class="cd-box"><div class="cd-num" id="cd-mins">0</div><div class="cd-label">Minute</div></div>
 <div class="cd-box"><div class="cd-num" id="cd-secs">0</div><div class="cd-label">Secunde</div></div>
 </div>
-<p class="cd-sub">pana la ziua cea mare</p>
+<p class="cd-sub">până la ziua cea mare</p>
 </div>
 <div class="buttons">
 <button id="btn-gcal" class="btn gold" type="button">📅 Google Calendar</button>
 <a href="https://drive.google.com/uc?export=download&id=1l9ks7OuDCmey79WgtgMvU_4hAMu7cpnr" class="btn outline">🍎 Apple Calendar</a>
 </div>
-<p class="deadline">Confirmati prezenta pana la 1 iulie 2026</p>
+<p class="deadline">Confirmați prezența până la 1 iulie 2026</p>
 <div class="buttons">
-<button id="btn-yes" class="btn primary" type="button">✓ Confirm ca vin</button>
+<button id="btn-yes" class="btn primary" type="button">✓ Confirm că vin</button>
 <button id="btn-no" class="btn danger" type="button">✗ Nu pot veni</button>
 </div>
 </div>
@@ -136,25 +137,67 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 <div class="cross-stitch">✿ ❊ ✿ ❊ ✿ ❊ ✿ ❊ ✿ ❊ ✿</div>
 <main class="container">
 <section id="rsvp-yes" class="card hidden">
-<h2>✓ Confirmare prezenta</h2>
+<h2>✓ Confirmare prezență</h2>
 <form id="form-yes">
 <div class="grid">
 <label>Nume complet *<input type="text" name="name" required placeholder="Ex: Popescu Ana"/></label>
 <label>Telefon *<input type="tel" name="phone" required placeholder="07xxxxxxxx"/></label>
 </div>
 <div class="grid">
-<label>Numar persoane *<div class="row"><label class="radio"><input type="radio" name="adults" value="1" checked/> 1</label><label class="radio"><input type="radio" name="adults" value="2"/> 2</label></div></label>
+<label>Număr persoane *<div class="row"><label class="radio"><input type="radio" name="adults" value="1" checked/> 1</label><label class="radio"><input type="radio" name="adults" value="2"/> 2</label></div></label>
 <label>Copii<input type="number" name="children" min="0" max="10" value="0"/></label>
 </div>
-<div id="children-extra" class="grid hidden">
-<label>Doriti meniu pentru copii? *<select name="children_menu"><option value="">-- Selectati --</option><option value="Da">Da</option><option value="Nu">Nu</option></select></label>
+
+<!-- COPII: 1 copil -->
+<div id="children-one" class="hidden">
+<div class="grid">
+<label>Doriți meniu pentru copil? *
+<select name="children_menu_one"><option value="">-- Selectați --</option><option value="Da">Da</option><option value="Nu">Nu</option></select>
+</label>
+<label>Copilul are nevoie de scaun special?
+<select name="scaun_one"><option value="Nu">Nu, are scaun propriu</option><option value="Scaun înălțător">Scaun înălțător (copil mic)</option><option value="Scaun bebeluș">Scaun pentru bebeluș</option></select>
+</label>
 </div>
-<div id="veg-section">
-<label>Meniuri vegetariene *<select name="veg_count" id="veg-count"><option value="0">0 - Niciun meniu vegetarian</option><option value="1">1 meniu vegetarian</option></select>
-<p class="veg-note">Selectati cate persoane doresc meniu vegetarian (din totalul de adulti + copii)</p></label>
 </div>
-<label>Mesaj pentru miri (optional)<textarea name="message" rows="3" placeholder="Un gand frumos..."></textarea></label>
-<label class="checkbox"><input type="checkbox" name="consent" required/>Sunt de acord ca datele mele sa fie prelucrate pentru organizarea evenimentului.</label>
+
+<!-- COPII: 2+ copii -->
+<div id="children-multi" class="hidden">
+<div class="grid">
+<label>Câte meniuri de copii doriți? *
+<select name="children_menu_multi" id="menu-multi-select"></select>
+<p class="field-note">Puteți comanda mai puține meniuri decât numărul de copii</p>
+</label>
+<label>Meniuri vegetariene (din total adulți + copii)
+<select name="veg_count" id="veg-count"></select>
+</label>
+</div>
+<div class="grid">
+<label>Câte scaune înălțătoare? (copii mici)
+<select name="scaun_inaltatoare" id="scaun-inalt-select"></select>
+</label>
+<label>Câte scaune pentru bebeluși?
+<select name="scaun_bebelus" id="scaun-bebe-select"></select>
+</label>
+</div>
+</div>
+
+<!-- VEGETARIAN: 1 copil sau 0 copii -->
+<div id="veg-section-simple" class="hidden">
+<label>Meniuri vegetariene (din total persoane)
+<select name="veg_count_simple" id="veg-count-simple"></select>
+</label>
+</div>
+
+<!-- INTOLERANȚE -->
+<div id="intolerance-section" class="hidden">
+<label>Intoleranțe sau alergii alimentare
+<textarea name="intolerante" rows="2" placeholder="Ex: intoleranță la lactoză, alergie la nuci, fără gluten..."></textarea>
+<p class="field-note">Vă rugăm să ne informați pentru a asigura meniuri adecvate</p>
+</label>
+</div>
+
+<label>Mesaj pentru miri (opțional)<textarea name="message" rows="3" placeholder="Un gând frumos..."></textarea></label>
+<label class="checkbox"><input type="checkbox" name="consent" required/>Sunt de acord ca datele mele să fie prelucrate pentru organizarea evenimentului.</label>
 <button class="btn primary" type="button" id="submit-yes">Trimite confirmarea</button>
 <div id="yes-status" class="status"></div>
 </form>
@@ -164,15 +207,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 <form id="form-no">
 <label>Nume complet<input type="text" name="name" required placeholder="Ex: Ionescu Mihai"/></label>
 <button class="btn danger" type="button" id="submit-no">Trimite</button>
-<p class="hint">Dupa trimitere, se deschide WhatsApp pentru mesajul catre miri.</p>
+<p class="hint">După trimitere, se deschide WhatsApp pentru mesajul către miri.</p>
 <div id="no-status" class="status"></div>
 </form>
 </section>
 <section class="card location-card">
-<h2>📍 Locatie</h2>
-<p><strong>Ballroom Capitol</strong><br/>Sos. Nicolina 203A, Judetul Iasi</p>
+<h2>📍 Locație</h2>
+<p><strong>Ballroom Capitol</strong><br/>Șos. Nicolina 203A, Județul Iași</p>
 <div class="ornament">— ❦ —</div>
-<p><a class="link" target="_blank" rel="noopener" href="https://maps.app.goo.gl/6ACiCiZP7edFx9rX9">📍 Vezi pe Google Maps</a>&nbsp;•&nbsp;<a class="link" target="_blank" rel="noopener" href="https://eventsbycapitol.ro/restaurante/ballroom-capitol/">🏛 Pagina locatiei</a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://maps.app.goo.gl/6ACiCiZP7edFx9rX9">📍 Vezi pe Google Maps</a>&nbsp;•&nbsp;<a class="link" target="_blank" rel="noopener" href="https://eventsbycapitol.ro/restaurante/ballroom-capitol/">🏛 Pagina locației</a></p>
 </section>
 </main>
 <div class="cross-stitch">✿ ❊ ✿ ❊ ✿ ❊ ✿ ❊ ✿ ❊ ✿</div>
@@ -189,34 +232,30 @@ introScreen.addEventListener('click',function(){
 if(introScreen.classList.contains('open'))return;
 introScreen.classList.add('open');
 var rect=introImg.getBoundingClientRect();
-var natW=introImg.naturalWidth;
-var natH=introImg.naturalHeight;
+var natW=introImg.naturalWidth;var natH=introImg.naturalHeight;
 var scale=Math.min(rect.width/natW,rect.height/natH);
-var visW=natW*scale;
-var visH=natH*scale;
-var visL=rect.left+(rect.width-visW)/2;
-var visT=rect.top+(rect.height-visH)/2;
+var visW=natW*scale;var visH=natH*scale;
+var visL=rect.left+(rect.width-visW)/2;var visT=rect.top+(rect.height-visH)/2;
 var imgSrc=introImg.src;
-var clone1=document.createElement('div');
-var clone2=document.createElement('div');
+var clone1=document.createElement('div');var clone2=document.createElement('div');
 var shared='position:fixed;top:'+visT+'px;left:'+visL+'px;width:'+visW+'px;height:'+visH+'px;background-image:url('+imgSrc+');background-size:'+visW+'px '+visH+'px;background-repeat:no-repeat;transition:transform 1.2s ease-in-out;z-index:10000;pointer-events:none;';
 clone1.style.cssText=shared+'background-position:left center;clip-path:inset(0 50% 0 0);';
 clone2.style.cssText=shared+'background-position:left center;clip-path:inset(0 0 0 50%);';
-document.body.appendChild(clone1);
-document.body.appendChild(clone2);
+document.body.appendChild(clone1);document.body.appendChild(clone2);
 introImg.style.visibility='hidden';
 requestAnimationFrame(function(){requestAnimationFrame(function(){
-clone1.style.transform='translateX(-120%)';
-clone2.style.transform='translateX(120%)';
+clone1.style.transform='translateX(-120%)';clone2.style.transform='translateX(120%)';
 });});
 setTimeout(function(){mainPage.classList.add('visible');},600);
 setTimeout(function(){introScreen.classList.add('gone');clone1.remove();clone2.remove();},1500);
 });
-var SHEET_URL='https://script.google.com/macros/s/AKfycbyw5vaUI1-77ALRyffShdSc3zwaXHtnrUVzAotRG0Wqkcgmrxf_DERBMxCZDSObRzJY/exec';
+
+var SHEET_URL='https://script.google.com/macros/s/AKfycbzB4wjnxMfBFMpQOcFUbsalBuRML1ZTlfgX8RMAtbNnkLmPhejGonkYegc3vnsQxvsI/exec';
 var WA_PHONE='40763384310';
 var COUPLE='Paul & Iuliana';
 var VENUE='Ballroom Capitol';
-var ADDR='Sos. Nicolina 203A, Iasi';
+var ADDR='Șos. Nicolina 203A, Iași';
+
 function updateCountdown(){
 var target=new Date('2026-08-22T19:30:00+03:00').getTime();
 var now=new Date().getTime();var diff=target-now;
@@ -227,62 +266,152 @@ document.getElementById('cd-mins').textContent=Math.floor((diff%(1000*60*60))/(1
 document.getElementById('cd-secs').textContent=Math.floor((diff%(1000*60))/1000);
 }
 updateCountdown();setInterval(updateCountdown,1000);
+
+/* GOOGLE CALENDAR - deschide ambele linkuri secvential */
 var gcalBase='https://calendar.google.com/calendar/render?action=TEMPLATE';
-var gcalLink1=gcalBase+'&'+new URLSearchParams({text:'⏰ Confirma prezenta - Nunta '+COUPLE,dates:'20260701T120000/20260701T123000',details:'Nu uita sa confirmi prezenta la nunta '+COUPLE+'! Termen limita: 1 iulie 2026.',ctz:'Europe/Bucharest'}).toString();
-var gcalLink2=gcalBase+'&'+new URLSearchParams({text:'💍 Nunta '+COUPLE,dates:'20260822T193000/20260822T235900',details:'Va asteptam cu drag! '+VENUE+', '+ADDR,location:VENUE+', '+ADDR,ctz:'Europe/Bucharest'}).toString();
-document.getElementById('btn-gcal').addEventListener('click',function(){window.open(gcalLink1,'_blank');setTimeout(function(){window.open(gcalLink2,'_blank');},1500);});
+document.getElementById('btn-gcal').addEventListener('click',function(){
+var link1=gcalBase+'&text='+encodeURIComponent('⏰ Confirmă prezența – Nunta '+COUPLE)+'&dates=20260701T120000/20260701T123000&details='+encodeURIComponent('Nu uita să confirmi prezența la nunta '+COUPLE+'! Termen limită: 1 iulie 2026.')+'&ctz=Europe/Bucharest';
+var link2=gcalBase+'&text='+encodeURIComponent('💍 Nunta '+COUPLE)+'&dates=20260822T163000/20260822T205900&details='+encodeURIComponent('Vă așteptăm cu drag! '+VENUE+', '+ADDR)+'&location='+encodeURIComponent(VENUE+', '+ADDR)+'&ctz=Europe/Bucharest';
+window.open(link2,'_blank');
+setTimeout(function(){window.open(link1,'_blank');},2000);
+});
+
 document.getElementById('btn-yes').addEventListener('click',function(){document.getElementById('rsvp-no').classList.add('hidden');document.getElementById('rsvp-yes').classList.remove('hidden');window.scrollTo({top:document.getElementById('rsvp-yes').offsetTop-20,behavior:'smooth'});});
 document.getElementById('btn-no').addEventListener('click',function(){document.getElementById('rsvp-yes').classList.add('hidden');document.getElementById('rsvp-no').classList.remove('hidden');window.scrollTo({top:document.getElementById('rsvp-no').offsetTop-20,behavior:'smooth'});});
+
 var formYes=document.getElementById('form-yes');
 var childrenInput=formYes.querySelector('input[name="children"]');
-var childrenExtra=document.getElementById('children-extra');
-var vegCount=document.getElementById('veg-count');
+var childrenOne=document.getElementById('children-one');
+var childrenMulti=document.getElementById('children-multi');
+var vegSimple=document.getElementById('veg-section-simple');
+var intolSection=document.getElementById('intolerance-section');
 var adultsRadios=formYes.querySelectorAll('input[name="adults"]');
-function updateVegOptions(){
-var adults=parseInt(formYes.querySelector('input[name="adults"]:checked').value||'1',10);
-var kids=parseInt(childrenInput.value||'0',10);var total=adults+kids;vegCount.innerHTML='';
-for(var i=0;i<=total;i++){var opt=document.createElement('option');opt.value=i;
-if(i===0)opt.textContent='0 - Niciun meniu vegetarian';
-else if(i===1)opt.textContent='1 meniu vegetarian';
-else opt.textContent=i+' meniuri vegetariene';vegCount.appendChild(opt);}
+
+function buildSelect(sel,max,labelSingular,labelPlural){
+sel.innerHTML='';
+for(var i=0;i<=max;i++){
+var opt=document.createElement('option');opt.value=i;
+if(i===0) opt.textContent='0';
+else if(i===1) opt.textContent='1 '+labelSingular;
+else opt.textContent=i+' '+labelPlural;
+sel.appendChild(opt);
 }
-childrenInput.addEventListener('input',function(){var hasKids=parseInt(childrenInput.value||'0',10)>0;if(hasKids){childrenExtra.classList.remove('hidden');}else{childrenExtra.classList.add('hidden');}updateVegOptions();});
-for(var i=0;i<adultsRadios.length;i++){adultsRadios[i].addEventListener('change',updateVegOptions);}
-updateVegOptions();
-function sendToSheet(data,callback){var params=new URLSearchParams();params.append('name',data.name);params.append('phone',data.phone);params.append('status',data.status);params.append('adults',data.adults);params.append('children_count',data.children_count);params.append('children_menu',data.children_menu);params.append('children_veg',data.children_veg);var url=SHEET_URL+'?'+params.toString();var done=false;var img=new Image();img.onload=function(){if(!done){done=true;callback(true);}};img.onerror=function(){if(!done){done=true;callback(true);}};img.src=url;}
+}
+
+function updateChildrenUI(){
+var kids=parseInt(childrenInput.value||'0',10);
+var adults=parseInt(formYes.querySelector('input[name="adults"]:checked').value||'1',10);
+var total=adults+kids;
+childrenOne.classList.add('hidden');
+childrenMulti.classList.add('hidden');
+vegSimple.classList.add('hidden');
+intolSection.classList.add('hidden');
+
+if(kids===0){
+vegSimple.classList.remove('hidden');
+buildSelect(document.getElementById('veg-count-simple'),adults,'meniu vegetarian','meniuri vegetariene');
+}else if(kids===1){
+childrenOne.classList.remove('hidden');
+vegSimple.classList.remove('hidden');
+intolSection.classList.remove('hidden');
+buildSelect(document.getElementById('veg-count-simple'),total,'meniu vegetarian','meniuri vegetariene');
+}else{
+childrenMulti.classList.remove('hidden');
+intolSection.classList.remove('hidden');
+buildSelect(document.getElementById('menu-multi-select'),kids,'meniu copii','meniuri copii');
+buildSelect(document.getElementById('veg-count'),total,'meniu vegetarian','meniuri vegetariene');
+buildSelect(document.getElementById('scaun-inalt-select'),kids,'scaun','scaune');
+buildSelect(document.getElementById('scaun-bebe-select'),kids,'scaun','scaune');
+}
+}
+
+childrenInput.addEventListener('input',updateChildrenUI);
+for(var i=0;i<adultsRadios.length;i++){adultsRadios[i].addEventListener('change',updateChildrenUI);}
+updateChildrenUI();
+
+function sendToSheet(data,callback){
+var params=new URLSearchParams();
+params.append('name',data.name);params.append('phone',data.phone);
+params.append('status',data.status);params.append('adults',data.adults);
+params.append('children_count',data.children_count);params.append('children_menu',data.children_menu);
+params.append('children_veg',data.children_veg);params.append('scaun_inaltatoare',data.scaun_inaltatoare);
+params.append('scaun_bebelus',data.scaun_bebelus);params.append('intolerante',data.intolerante);
+var url=SHEET_URL+'?'+params.toString();
+var done=false;var img=new Image();
+img.onload=function(){if(!done){done=true;callback(true);}};
+img.onerror=function(){if(!done){done=true;callback(true);}};
+img.src=url;
+}
+
 document.getElementById('submit-yes').addEventListener('click',function(){
 var fd=new FormData(formYes);var yesStatus=document.getElementById('yes-status');
 var name=(fd.get('name')||'').trim();var phone=(fd.get('phone')||'').trim();
-if(!name){yesStatus.innerHTML='<p style="color:#c62828">Completeaza numele.</p>';return;}
-if(!phone){yesStatus.innerHTML='<p style="color:#c62828">Completeaza telefonul.</p>';return;}
-if(!fd.get('consent')){yesStatus.innerHTML='<p style="color:#c62828">Trebuie sa accepti prelucrarea datelor.</p>';return;}
+if(!name){yesStatus.innerHTML='<p style="color:#c62828">Completează numele.</p>';return;}
+if(!phone){yesStatus.innerHTML='<p style="color:#c62828">Completează telefonul.</p>';return;}
+if(!fd.get('consent')){yesStatus.innerHTML='<p style="color:#c62828">Trebuie să accepți prelucrarea datelor.</p>';return;}
 var kids=parseInt(fd.get('children')||'0',10);
-if(kids>0&&!fd.get('children_menu')){yesStatus.innerHTML='<p style="color:#c62828">Selecteaza daca doresti meniu pentru copii.</p>';return;}
-var vegNr=fd.get('veg_count')||'0';var btn=document.getElementById('submit-yes');
-btn.disabled=true;btn.textContent='Se trimite...';yesStatus.innerHTML='';
 var adults=fd.get('adults')||'1';
-var data={name:name,phone:phone,status:'Da',adults:adults,children_count:String(kids),children_menu:kids>0?(fd.get('children_menu')||'Nu'):'Nu',children_veg:vegNr==='0'?'0':vegNr};
-sendToSheet(data,function(){var waMsg='';
-if(adults==='1'&&kids===0){waMsg='Buna, sunt '+name+'. Confirm prezenta la nunta voastra pe 22 august 2026! Abia astept!';}
-else if(adults==='2'&&kids===0){waMsg='Buna, sunt '+name+'. Confirmam prezenta la nunta voastra pe 22 august 2026! Vom fi 2 persoane. Abia asteptam!';}
-else if(adults==='1'&&kids>0){waMsg='Buna, sunt '+name+'. Confirm prezenta la nunta voastra pe 22 august 2026! Voi fi insotit de '+(kids===1?'1 copil':kids+' copii')+'. Abia asteptam!';}
-else{waMsg='Buna, sunt '+name+'. Confirmam prezenta la nunta voastra pe 22 august 2026! Vom fi 2 adulti si '+(kids===1?'1 copil':kids+' copii')+'. Abia asteptam!';}
+
+var childrenMenu='0';
+var vegNr='0';
+var scaunInalt='0';
+var scaunBebe='0';
+var intolerante=(fd.get('intolerante')||'').trim();
+
+if(kids===0){
+vegNr=fd.get('veg_count_simple')||'0';
+}else if(kids===1){
+var menuOne=fd.get('children_menu_one');
+if(!menuOne){yesStatus.innerHTML='<p style="color:#c62828">Selectează dacă dorești meniu pentru copil.</p>';return;}
+childrenMenu=menuOne==='Da'?'1':'0';
+var scaunOne=fd.get('scaun_one')||'Nu';
+if(scaunOne==='Scaun înălțător') scaunInalt='1';
+if(scaunOne==='Scaun bebeluș') scaunBebe='1';
+vegNr=fd.get('veg_count_simple')||'0';
+}else{
+childrenMenu=fd.get('children_menu_multi')||'0';
+vegNr=fd.get('veg_count')||'0';
+scaunInalt=fd.get('scaun_inaltatoare')||'0';
+scaunBebe=fd.get('scaun_bebelus')||'0';
+}
+
+var btn=document.getElementById('submit-yes');
+btn.disabled=true;btn.textContent='Se trimite...';yesStatus.innerHTML='';
+
+var data={
+name:name,phone:phone,status:'Da',adults:adults,
+children_count:String(kids),children_menu:childrenMenu,
+children_veg:vegNr,scaun_inaltatoare:scaunInalt,
+scaun_bebelus:scaunBebe,intolerante:intolerante
+};
+
+sendToSheet(data,function(){
+var waMsg='';
+if(adults==='1'&&kids===0){waMsg='Bună, sunt '+name+'. Confirm prezența la nunta voastră pe 22 august 2026! Abia aștept!';}
+else if(adults==='2'&&kids===0){waMsg='Bună, sunt '+name+'. Confirmăm prezența la nunta voastră pe 22 august 2026! Vom fi 2 persoane. Abia așteptăm!';}
+else if(adults==='1'&&kids>0){waMsg='Bună, sunt '+name+'. Confirm prezența la nunta voastră pe 22 august 2026! Voi fi însoțit de '+(kids===1?'1 copil':kids+' copii')+'. Abia așteptăm!';}
+else{waMsg='Bună, sunt '+name+'. Confirmăm prezența la nunta voastră pe 22 august 2026! Vom fi 2 adulți și '+(kids===1?'1 copil':kids+' copii')+'. Abia așteptăm!';}
 var waLink='https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(waMsg);
-yesStatus.innerHTML='<div class="success-box">✓ Multumim! Confirmarea a fost salvata cu succes.<br/>Va asteptam cu drag!<br/>Se deschide WhatsApp pentru confirmare...</div>';
-formYes.reset();childrenExtra.classList.add('hidden');updateVegOptions();
+yesStatus.innerHTML='<div class="success-box">✓ Mulțumim! Confirmarea a fost salvată cu succes.<br/>Vă așteptăm cu drag!<br/>Se deschide WhatsApp pentru confirmare...</div>';
+formYes.reset();childrenOne.classList.add('hidden');childrenMulti.classList.add('hidden');intolSection.classList.add('hidden');updateChildrenUI();
 btn.disabled=false;btn.textContent='Trimite confirmarea';
-setTimeout(function(){window.location.href=waLink;},2000);});});
+setTimeout(function(){window.location.href=waLink;},2000);
+});
+});
+
 document.getElementById('submit-no').addEventListener('click',function(){
 var fd=new FormData(document.getElementById('form-no'));var noStatus=document.getElementById('no-status');
 var name=(fd.get('name')||'').trim();
-if(!name){noStatus.innerHTML='<p style="color:#c62828">Completeaza numele.</p>';return;}
+if(!name){noStatus.innerHTML='<p style="color:#c62828">Completează numele.</p>';return;}
 var btn=document.getElementById('submit-no');btn.disabled=true;btn.textContent='Se trimite...';noStatus.innerHTML='';
-var data={name:name,phone:'-',status:'Nu',adults:'0',children_count:'0',children_menu:'Nu',children_veg:'0'};
+var data={name:name,phone:'-',status:'Nu',adults:'0',children_count:'0',children_menu:'0',children_veg:'0',scaun_inaltatoare:'0',scaun_bebelus:'0',intolerante:''};
 sendToSheet(data,function(){
-noStatus.innerHTML='<div class="success-box">✓ Raspunsul a fost inregistrat.<br/>Se deschide WhatsApp...</div>';
+noStatus.innerHTML='<div class="success-box">✓ Răspunsul a fost înregistrat.<br/>Se deschide WhatsApp...</div>';
 btn.disabled=false;btn.textContent='Trimite';
-setTimeout(function(){var msg='Buna, sunt '+name+'. Din pacate nu pot ajunge la nunta voastra. Va doresc petrecere frumoasa!';
-window.location.href='https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(msg);},2000);});});
+setTimeout(function(){var msg='Bună, sunt '+name+'. Din păcate nu pot ajunge la nunta voastră. Vă doresc petrecere frumoasă!';
+window.location.href='https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(msg);},2000);
+});
+});
 </script>
 </body>
 </html>
