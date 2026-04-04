@@ -13,32 +13,66 @@
 --gold:#c9a84c;--gold-light:#e8d9a0;--muted:#6b5b4f;--border:#d4b896;--cream:#f5ead6;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;}
+body{font-family:Inter,system-ui,Arial,sans-serif;background:#000;color:var(--fg);overflow-x:hidden;}
 
-/* VIDEO INTRO */
-#video-intro{
+/* INTRO SCREEN */
+#intro-screen{
 position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;
-background:#000;display:flex;align-items:center;justify-content:center;
-transition:opacity 1.5s ease;
+background:#000;
+display:flex;align-items:center;justify-content:center;flex-direction:column;
+cursor:pointer;
+overflow:hidden;
 }
-#video-intro.fade-out{opacity:0;pointer-events:none;}
-#video-intro.hidden-full{display:none;}
-#video-intro video{
+#intro-screen img{
 width:100%;height:100%;object-fit:cover;
+transition:transform 1.5s ease, filter 1.5s ease;
 }
-#skip-btn{
-position:absolute;bottom:30px;right:30px;
-background:rgba(255,255,255,0.2);color:#fff;border:2px solid rgba(255,255,255,0.5);
-padding:0.5rem 1.2rem;border-radius:30px;font-size:0.9rem;cursor:pointer;
-backdrop-filter:blur(4px);transition:all 0.3s;z-index:10000;
+#intro-screen.zoom-out img{
+transform:scale(1.3);
+filter:blur(8px) brightness(1.5);
 }
-#skip-btn:hover{background:rgba(255,255,255,0.4);}
+#intro-screen .tap-hint{
+position:absolute;bottom:40px;
+color:#fff;font-family:"Cormorant Garamond",serif;font-size:1.1rem;
+letter-spacing:3px;text-transform:uppercase;
+animation:pulse 2s infinite;
+text-shadow:0 2px 10px rgba(0,0,0,0.8);
+}
+@keyframes pulse{
+0%,100%{opacity:0.5;transform:translateY(0)}
+50%{opacity:1;transform:translateY(-5px)}
+}
+#intro-screen .overlay{
+position:absolute;top:0;left:0;width:100%;height:100%;
+background:radial-gradient(circle,transparent 30%,rgba(0,0,0,0.4) 100%);
+pointer-events:none;
+}
+
+/* PARTI CARTE - DESCHIDERE */
+#intro-screen.open-book{
+pointer-events:none;
+}
+.book-left,.book-right{
+position:absolute;top:0;width:50%;height:100%;
+overflow:hidden;
+transition:transform 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+.book-left{left:0;transform-origin:left center;}
+.book-right{right:0;transform-origin:right center;}
+.book-left img,.book-right img{
+position:absolute;top:0;height:100%;width:200%;object-fit:cover;
+}
+.book-left img{left:0;}
+.book-right img{right:0;left:auto;}
+#intro-screen.open-book .book-left{transform:perspective(1500px) rotateY(-120deg);}
+#intro-screen.open-book .book-right{transform:perspective(1500px) rotateY(120deg);}
+#intro-screen.open-book .tap-hint{opacity:0;}
+#intro-screen.open-book .overlay{opacity:0;transition:opacity 0.5s;}
+#intro-screen.gone{display:none;}
 
 /* PAGINA PRINCIPALA */
-#main-page{opacity:0;transition:opacity 1.5s ease;}
+#main-page{opacity:0;transition:opacity 1s ease 0.8s;}
 #main-page.visible{opacity:1;}
-
-/* FUNDAL */
 .page-bg{
 background:url('https://adrianboglis95-del.github.io/Nunta/Fundal.png') center center no-repeat;
 background-size:cover;
@@ -46,11 +80,7 @@ background-attachment:fixed;
 min-height:100vh;
 }
 @media(max-width:768px){
-.page-bg{
-background-size:cover;
-background-attachment:scroll;
-background-position:center center;
-}
+.page-bg{background-attachment:scroll;background-position:center center;}
 }
 
 .traditional-border{padding:8px 0;text-align:center;}
@@ -62,16 +92,10 @@ font-size:10px;color:var(--accent);letter-spacing:8px;overflow:hidden;white-spac
 }
 .cross-stitch{text-align:center;padding:12px 0;color:var(--accent);font-size:14px;letter-spacing:6px;}
 .container{max-width:880px;margin:0 auto;padding:1.5rem;}
-
-/* HERO cu transparenta pentru a vedea fundalul */
-.hero{
-border-bottom:4px solid var(--accent);padding-bottom:0;
-}
+.hero{border-bottom:4px solid var(--accent);padding-bottom:0;}
 .hero-inner{
 border:3px solid var(--gold);border-radius:16px;padding:2rem 1.5rem;margin:1rem 0;
-background:rgba(255,250,242,0.92);
-backdrop-filter:blur(8px);
-position:relative;
+background:rgba(255,250,242,0.92);backdrop-filter:blur(8px);position:relative;
 }
 .hero-inner::before{
 content:'❧';position:absolute;top:-14px;left:50%;transform:translateX(-50%);
@@ -99,14 +123,7 @@ background:rgba(245,234,214,0.95);padding:0 12px;color:var(--gold);font-size:22p
 .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--fg);}
 .btn.gold:hover{box-shadow:0 4px 12px rgba(201,168,76,0.4);}
 .deadline{text-align:center;font-family:"Cormorant Garamond",serif;font-size:1.05rem;color:var(--accent);margin:1rem 0 0.5rem;font-weight:600;}
-
-/* CARDURI cu transparenta */
-.card{
-background:rgba(255,250,242,0.92);
-backdrop-filter:blur(8px);
-border:2px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;
-box-shadow:0 2px 12px rgba(0,0,0,0.04);position:relative;
-}
+.card{background:rgba(255,250,242,0.92);backdrop-filter:blur(8px);border:2px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.04);position:relative;}
 .card h2{font-family:"Playfair Display",serif;color:var(--accent);font-size:1.4rem;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:2px solid var(--gold-light);}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent));border-radius:12px 12px 0 0;}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
@@ -120,8 +137,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 .status{margin-top:0.8rem;font-weight:600}
 .hint{color:var(--muted);font-size:0.9rem;margin-top:0.4rem}
 .location-card p{margin:0.3rem 0;line-height:1.6}
-.footer{border-top:4px solid var(--accent);margin-top:2rem;padding:1.2rem 0;
-background:rgba(245,234,214,0.9);text-align:center;}
+.footer{border-top:4px solid var(--accent);margin-top:2rem;padding:1.2rem 0;background:rgba(245,234,214,0.9);text-align:center;}
 .footer .small{font-size:0.9rem;color:var(--muted)}
 .footer .folk{color:var(--gold);font-size:1rem;letter-spacing:6px;margin-bottom:0.4rem;}
 .link{color:var(--accent2);text-decoration:none}
@@ -138,12 +154,16 @@ background:rgba(245,234,214,0.9);text-align:center;}
 </head>
 <body>
 
-<!-- VIDEO INTRO -->
-<div id="video-intro">
-<video id="intro-video" autoplay muted playsinline>
-<source src="https://drive.google.com/uc?export=download&id=1EgXbW64FXNDDGekXkdRDAMkOCPNyQznX" type="video/mp4">
-</video>
-<button id="skip-btn" type="button">Sari peste ▸</button>
+<!-- INTRO - CARTE -->
+<div id="intro-screen">
+<div class="book-left">
+<img src="https://adrianboglis95-del.github.io/Nunta/intro.png" alt=""/>
+</div>
+<div class="book-right">
+<img src="https://adrianboglis95-del.github.io/Nunta/intro.png" alt=""/>
+</div>
+<div class="overlay"></div>
+<div class="tap-hint">✦ Apasa pentru a deschide invitatia ✦</div>
 </div>
 
 <!-- PAGINA PRINCIPALA -->
@@ -262,23 +282,20 @@ Sunt de acord ca datele mele sa fie prelucrate pentru organizarea evenimentului.
 </div>
 
 <script>
-/* VIDEO INTRO */
-var videoIntro=document.getElementById('video-intro');
-var introVideo=document.getElementById('intro-video');
-var skipBtn=document.getElementById('skip-btn');
+/* INTRO CARTE */
+var introScreen=document.getElementById('intro-screen');
 var mainPage=document.getElementById('main-page');
-
-function showMainPage(){
-videoIntro.classList.add('fade-out');
+introScreen.addEventListener('click',function(){
+if(introScreen.classList.contains('open-book')) return;
+introScreen.classList.add('open-book');
+setTimeout(function(){
 mainPage.classList.add('visible');
-setTimeout(function(){videoIntro.classList.add('hidden-full');},1600);
-}
-introVideo.addEventListener('ended',showMainPage);
-skipBtn.addEventListener('click',function(){
-introVideo.pause();
-showMainPage();
+},800);
+setTimeout(function(){
+introScreen.classList.add('gone');
+document.body.style.background='var(--bg)';
+},2200);
 });
-introVideo.addEventListener('error',showMainPage);
 
 var SHEET_URL='https://script.google.com/macros/s/AKfycbyw5vaUI1-77ALRyffShdSc3zwaXHtnrUVzAotRG0Wqkcgmrxf_DERBMxCZDSObRzJY/exec';
 var WA_PHONE='40763384310';
@@ -303,7 +320,6 @@ document.getElementById('cd-secs').textContent=s;
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-/* GOOGLE CALENDAR - 2 EVENIMENTE */
 var gcalBase='https://calendar.google.com/calendar/render?action=TEMPLATE';
 var gcalLink1=gcalBase+'&'+new URLSearchParams({
 text:'⏰ Confirma prezenta - Nunta '+COUPLE,
@@ -399,10 +415,7 @@ btn.disabled=true;btn.textContent='Se trimite...';
 yesStatus.innerHTML='';
 var adults=fd.get('adults')||'1';
 var data={
-name:name,
-phone:phone,
-status:'Da',
-adults:adults,
+name:name,phone:phone,status:'Da',adults:adults,
 children_count:String(kids),
 children_menu:kids>0?(fd.get('children_menu')||'Nu'):'Nu',
 children_veg:vegNr==='0'?'0':vegNr
@@ -420,9 +433,7 @@ waMsg='Buna, sunt '+name+'. Confirmam prezenta la nunta voastra pe 22 august 202
 }
 var waLink='https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(waMsg);
 yesStatus.innerHTML='<div class="success-box">✓ Multumim! Confirmarea a fost salvata cu succes.<br/>Va asteptam cu drag!<br/>Se deschide WhatsApp pentru confirmare...</div>';
-formYes.reset();
-childrenExtra.classList.add('hidden');
-updateVegOptions();
+formYes.reset();childrenExtra.classList.add('hidden');updateVegOptions();
 btn.disabled=false;btn.textContent='Trimite confirmarea';
 setTimeout(function(){window.location.href=waLink;},2000);
 });
@@ -436,10 +447,7 @@ if(!name){noStatus.innerHTML='<p style="color:#c62828">Completeaza numele.</p>';
 var btn=document.getElementById('submit-no');
 btn.disabled=true;btn.textContent='Se trimite...';
 noStatus.innerHTML='';
-var data={
-name:name,phone:'-',status:'Nu',adults:'0',
-children_count:'0',children_menu:'Nu',children_veg:'0'
-};
+var data={name:name,phone:'-',status:'Nu',adults:'0',children_count:'0',children_menu:'Nu',children_veg:'0'};
 sendToSheet(data,function(){
 noStatus.innerHTML='<div class="success-box">✓ Raspunsul a fost inregistrat.<br/>Se deschide WhatsApp...</div>';
 btn.disabled=false;btn.textContent='Trimite';
