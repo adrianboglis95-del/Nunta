@@ -13,8 +13,47 @@
 --gold:#c9a84c;--gold-light:#e8d9a0;--muted:#6b5b4f;--border:#d4b896;--cream:#f5ead6;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--fg);}
-.traditional-border{background:var(--bg);padding:8px 0;text-align:center;}
+body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;}
+
+/* VIDEO INTRO */
+#video-intro{
+position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;
+background:#000;display:flex;align-items:center;justify-content:center;
+transition:opacity 1.5s ease;
+}
+#video-intro.fade-out{opacity:0;pointer-events:none;}
+#video-intro.hidden-full{display:none;}
+#video-intro video{
+width:100%;height:100%;object-fit:cover;
+}
+#skip-btn{
+position:absolute;bottom:30px;right:30px;
+background:rgba(255,255,255,0.2);color:#fff;border:2px solid rgba(255,255,255,0.5);
+padding:0.5rem 1.2rem;border-radius:30px;font-size:0.9rem;cursor:pointer;
+backdrop-filter:blur(4px);transition:all 0.3s;z-index:10000;
+}
+#skip-btn:hover{background:rgba(255,255,255,0.4);}
+
+/* PAGINA PRINCIPALA */
+#main-page{opacity:0;transition:opacity 1.5s ease;}
+#main-page.visible{opacity:1;}
+
+/* FUNDAL */
+.page-bg{
+background:url('https://adrianboglis95-del.github.io/Nunta/Fundal.png') center center no-repeat;
+background-size:cover;
+background-attachment:fixed;
+min-height:100vh;
+}
+@media(max-width:768px){
+.page-bg{
+background-size:cover;
+background-attachment:scroll;
+background-position:center center;
+}
+}
+
+.traditional-border{padding:8px 0;text-align:center;}
 .traditional-border-inner{height:32px;position:relative;}
 .traditional-border-inner::before{
 content:'◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆';
@@ -23,22 +62,24 @@ font-size:10px;color:var(--accent);letter-spacing:8px;overflow:hidden;white-spac
 }
 .cross-stitch{text-align:center;padding:12px 0;color:var(--accent);font-size:14px;letter-spacing:6px;}
 .container{max-width:880px;margin:0 auto;padding:1.5rem;}
+
+/* HERO cu transparenta pentru a vedea fundalul */
 .hero{
-background:linear-gradient(180deg,rgba(253,248,240,0.9),rgba(253,248,240,0.7)),
-repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(139,26,26,0.03) 20px,rgba(139,26,26,0.03) 40px);
 border-bottom:4px solid var(--accent);padding-bottom:0;
 }
 .hero-inner{
 border:3px solid var(--gold);border-radius:16px;padding:2rem 1.5rem;margin:1rem 0;
-background:linear-gradient(180deg,var(--paper),var(--cream));position:relative;
+background:rgba(255,250,242,0.92);
+backdrop-filter:blur(8px);
+position:relative;
 }
 .hero-inner::before{
 content:'❧';position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-background:var(--cream);padding:0 12px;color:var(--gold);font-size:22px;
+background:rgba(245,234,214,0.95);padding:0 12px;color:var(--gold);font-size:22px;
 }
 .hero-inner::after{
 content:'❧';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%) rotate(180deg);
-background:var(--cream);padding:0 12px;color:var(--gold);font-size:22px;
+background:rgba(245,234,214,0.95);padding:0 12px;color:var(--gold);font-size:22px;
 }
 .hero h1{font-family:"Playfair Display",serif;font-size:2.4rem;margin:0.5rem 0;color:var(--accent);text-align:center;}
 .hero .subtitle{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--gold);text-align:center;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.8rem;}
@@ -58,7 +99,14 @@ background:var(--cream);padding:0 12px;color:var(--gold);font-size:22px;
 .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--fg);}
 .btn.gold:hover{box-shadow:0 4px 12px rgba(201,168,76,0.4);}
 .deadline{text-align:center;font-family:"Cormorant Garamond",serif;font-size:1.05rem;color:var(--accent);margin:1rem 0 0.5rem;font-weight:600;}
-.card{background:var(--paper);border:2px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.04);position:relative;}
+
+/* CARDURI cu transparenta */
+.card{
+background:rgba(255,250,242,0.92);
+backdrop-filter:blur(8px);
+border:2px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;
+box-shadow:0 2px 12px rgba(0,0,0,0.04);position:relative;
+}
 .card h2{font-family:"Playfair Display",serif;color:var(--accent);font-size:1.4rem;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:2px solid var(--gold-light);}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent));border-radius:12px 12px 0 0;}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
@@ -71,9 +119,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 .hidden{display:none}
 .status{margin-top:0.8rem;font-weight:600}
 .hint{color:var(--muted);font-size:0.9rem;margin-top:0.4rem}
-.location-card{background:linear-gradient(135deg,var(--paper),var(--cream));}
 .location-card p{margin:0.3rem 0;line-height:1.6}
-.footer{border-top:4px solid var(--accent);margin-top:2rem;padding:1.2rem 0;background:linear-gradient(180deg,var(--cream),var(--bg));text-align:center;}
+.footer{border-top:4px solid var(--accent);margin-top:2rem;padding:1.2rem 0;
+background:rgba(245,234,214,0.9);text-align:center;}
 .footer .small{font-size:0.9rem;color:var(--muted)}
 .footer .folk{color:var(--gold);font-size:1rem;letter-spacing:6px;margin-bottom:0.4rem;}
 .link{color:var(--accent2);text-decoration:none}
@@ -89,6 +137,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
 </style>
 </head>
 <body>
+
+<!-- VIDEO INTRO -->
+<div id="video-intro">
+<video id="intro-video" autoplay muted playsinline>
+<source src="https://adrianboglis95-del.github.io/Nunta/intro.mp4" type="video/mp4">
+</video>
+<button id="skip-btn" type="button">Sari peste ▸</button>
+</div>
+
+<!-- PAGINA PRINCIPALA -->
+<div id="main-page" class="page-bg">
 <div class="traditional-border"><div class="traditional-border-inner"></div></div>
 <header class="hero">
 <div class="container">
@@ -200,7 +259,27 @@ Sunt de acord ca datele mele sa fie prelucrate pentru organizarea evenimentului.
 <div class="folk">◆ ◇ ◆ ◇ ◆ ◇ ◆</div>
 <div class="container small">Cu drag, Paul & Iuliana • 22 august 2026</div>
 </footer>
+</div>
+
 <script>
+/* VIDEO INTRO */
+var videoIntro=document.getElementById('video-intro');
+var introVideo=document.getElementById('intro-video');
+var skipBtn=document.getElementById('skip-btn');
+var mainPage=document.getElementById('main-page');
+
+function showMainPage(){
+videoIntro.classList.add('fade-out');
+mainPage.classList.add('visible');
+setTimeout(function(){videoIntro.classList.add('hidden-full');},1600);
+}
+introVideo.addEventListener('ended',showMainPage);
+skipBtn.addEventListener('click',function(){
+introVideo.pause();
+showMainPage();
+});
+introVideo.addEventListener('error',showMainPage);
+
 var SHEET_URL='https://script.google.com/macros/s/AKfycbyw5vaUI1-77ALRyffShdSc3zwaXHtnrUVzAotRG0Wqkcgmrxf_DERBMxCZDSObRzJY/exec';
 var WA_PHONE='40763384310';
 var COUPLE='Paul & Iuliana';
@@ -244,7 +323,6 @@ window.open(gcalLink1,'_blank');
 setTimeout(function(){window.open(gcalLink2,'_blank');},1500);
 });
 
-/* BUTOANE DA/NU */
 document.getElementById('btn-yes').addEventListener('click',function(){
 document.getElementById('rsvp-no').classList.add('hidden');
 document.getElementById('rsvp-yes').classList.remove('hidden');
@@ -256,7 +334,6 @@ document.getElementById('rsvp-no').classList.remove('hidden');
 window.scrollTo({top:document.getElementById('rsvp-no').offsetTop-20,behavior:'smooth'});
 });
 
-/* LOGICA FORMULAR */
 var formYes=document.getElementById('form-yes');
 var childrenInput=formYes.querySelector('input[name="children"]');
 var childrenExtra=document.getElementById('children-extra');
@@ -286,7 +363,6 @@ updateVegOptions();
 for(var i=0;i<adultsRadios.length;i++){adultsRadios[i].addEventListener('change',updateVegOptions);}
 updateVegOptions();
 
-/* TRIMITE LA GOOGLE SHEETS */
 function sendToSheet(data,callback){
 var params=new URLSearchParams();
 params.append('name',data.name);
@@ -304,7 +380,6 @@ img.onerror=function(){if(!done){done=true;callback(true);}};
 img.src=url;
 }
 
-/* SUBMIT DA */
 document.getElementById('submit-yes').addEventListener('click',function(){
 var fd=new FormData(formYes);
 var yesStatus=document.getElementById('yes-status');
@@ -353,7 +428,6 @@ setTimeout(function(){window.location.href=waLink;},2000);
 });
 });
 
-/* SUBMIT NU */
 document.getElementById('submit-no').addEventListener('click',function(){
 var fd=new FormData(document.getElementById('form-no'));
 var noStatus=document.getElementById('no-status');
